@@ -22,7 +22,21 @@ function TileGrid.BuildGrid(parent, sizeX, sizeZ, tileSize, y, offset) -- sizeX 
             --adjusting position of the current tile based on the origin. 
             p.Position = origin + Vector3.new((x-1)*tileSize, 0, (z-1)*tileSize)
             p.Parent = parent
+
             table.insert(tiles, p)
+
+            --creating the spawn points of the players once they're stepped on the JoinPad.
+            if x == math.ceil(sizeX/2) and z == math.ceil(sizeZ/2) then 
+                local marker = Instance.new("Part")
+                marker.Name = "ArenaSpawn"
+                marker.Size = Vector3.new(2, 1, 2)
+                marker.Position = p.Position + Vector3.new(0, 1.5, 0)
+                marker.Anchored = true
+                marker.CanCollide = false
+                marker.Transparency = 0.5
+                marker.Color = Color3.fromRGB(255, 255, 255)
+                marker.Parent = parent
+            end
         end
     end
     return tiles
