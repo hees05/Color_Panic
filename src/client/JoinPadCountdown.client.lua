@@ -8,8 +8,8 @@ local event = ReplicatedStorage:WaitForChild("JoinPadCountdown")
 --creating the gui for showing the player teleporting status. 
 local gui = Instance.new("ScreenGui")
 gui.Name = "JoinPadGui"
-gui.ResetOnSpawn = false
-gui.IgnoreGuiInset = true
+gui.ResetOnSpawn = false --the gui persists even when the user respawns instead of the playergui getting cleared. 
+gui.IgnoreGuiInset = true --lets the gui not collide with the pre-existing gui default components. 
 gui.Enabled = false
 gui.Parent = player:WaitForChild("PlayerGui")
 
